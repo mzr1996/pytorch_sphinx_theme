@@ -16,6 +16,10 @@
 {% set display_github = True %}
 {% endif %}
 
+{% if check_meta and 'github_page' in meta %}
+{% set display_github = True %}
+{% endif %}
+
 {% if check_meta and 'bitbucket_url' in meta %}
 {% set display_bitbucket = True %}
 {% endif %}
@@ -48,9 +52,9 @@
             {% set branch_name = github_version %}
             {% endif %}
             {% if language == "en" %}
-              <a href="/zh_CN/{{ branch_name }}/{{ pagename }}{{ file_suffix }}" class="fa fa-language"> {{ _('以中文阅读') }}</a>
+              <a href="/zh_CN/{{ branch_name }}/{{ pagename }}{{ file_suffix }}" class="fas fa-language"> {{ _('以中文阅读') }}</a>
             {% else %}
-              <a href="/en/{{ branch_name }}/{{ pagename }}{{ file_suffix }}" class="fa fa-language"> {{ _('Read in English') }}</a>
+              <a href="/en/{{ branch_name }}/{{ pagename }}{{ file_suffix }}" class="fas fa-language"> {{ _('Read in English') }}</a>
             {% endif %}
         {% endif %}
       </li>
@@ -58,12 +62,12 @@
       <li class="pytorch-breadcrumbs-aside">
         {% if check_meta and 'github_url' in meta %}
           <!-- User defined GitHub URL -->
-          <a href="{{ meta['github_url'] }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
+          <a href="{{ meta['github_url'] }}" class="fab fa-github"> {{ _('Edit on GitHub') }}</a>
         {% elif check_meta and 'github_page' in meta %}
           <!-- User defined GitHub URL -->
-          <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ meta['github_page'] }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
+          <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ meta['github_page'] }}" class="fab fa-github"> {{ _('Edit on GitHub') }}</a>
         {% elif default_edit_on_github %}
-          <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
+          <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="fab fa-github"> {{ _('Edit on GitHub') }}</a>
         {% endif %}
       </li>
       {% endif %}
